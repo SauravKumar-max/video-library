@@ -1,1 +1,1 @@
-# video-librarty
+# video-library
