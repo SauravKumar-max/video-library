@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { VideoListProvider } from "./context/video-context";
+import { PlaylistProvider } from "./context/playlist-context";
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <VideoListProvider>
+        <PlaylistProvider>
+          <App />
+        </PlaylistProvider>
+      </VideoListProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
