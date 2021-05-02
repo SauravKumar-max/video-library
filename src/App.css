@@ -339,3 +339,184 @@
 }
 
 
+/* Playlist modal */
+
+.playlist-modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  background: rgba(126, 123, 123, 0.575);
+}
+
+.playlist-container{
+  min-width: 15rem;
+  background: #fff;
+  border-radius: 0.2rem;
+}
+
+.playlist-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: solid 1px rgba(126, 123, 123, 0.575);
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.playlist-items{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-bottom: solid 1px rgba(126, 123, 123, 0.575);
+}
+
+.playlist-items input{
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 0.8rem;
+}
+
+.playlist-items label{
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.create-btn{
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100%;
+  font-weight: bold;
+}
+
+.create-btn:hover{
+  background: rgba(175, 187, 209, 0.219);
+}
+
+.create-playlist{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.create-playlist button{
+  max-width: 8rem;
+  margin: auto;
+}
+
+.create-playlist .text-input{
+  max-width: 12rem;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Playlist Card */
+
+.playlists{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  grid-area: video;
+  margin: 1rem 4rem;
+  width: 50%;
+}
+
+
+.playlist-box{
+  position: relative;
+  width: 16.2rem;
+  height: 145px;
+  border: solid 1px #000;
+  background: rgba(196, 192, 192, 0.3);
+}
+
+.playlist-box img{
+  width: 16.2rem;
+}
+
+.overlay-text{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 145px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.overlay-text p {
+  font-size: 1rem;
+  margin: 0.4rem 0;
+}
+
+.empty-playlist-box{
+  margin: 3.5rem 1.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: rgb(82, 80, 80);
+}
+
+.playlist-card{
+  position: relative;
+}
+
+.full-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  font-weight: bold;
+  z-index: 3;
+  width: 16rem;
+  height: 146px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0;
+
+}
+
+.full-overlay:hover{
+  opacity: 1;
+}
+
+.delete-btn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.2rem;
+}
+
+.delete-btn p{
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.delete-btn button{
+  font-size: 1rem;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  background: rgba(196, 192, 192, 0.3);
+
+}
+
