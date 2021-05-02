@@ -15,3 +15,39 @@
   border: none;
 }
 
+/* Sidebar */
+
+.sidebar-container{
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  height: 100%;
+  border-right: solid 1px rgb(196, 192, 192);
+  grid-area: sidebar;
+}
+
+.sidebar-lists{
+  list-style: none;
+  padding: 0.6rem 0;
+}
+
+.sidebar-item{
+  padding: 1rem 4rem 1rem 1rem;
+  font-size: 1.2rem;
+}
+
+.sidebar-item a{
+  text-decoration: none;
+  color: rgb(82, 80, 80);
+  font-weight: bold;
+}
+
+.sidebar-item i{
+  margin: 0 1rem;
+}
+
+.sidebar-item:hover{
+  background-color: rgba(196, 192, 192, 0.3);
+}
+
+
