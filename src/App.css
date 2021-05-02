@@ -51,3 +51,291 @@
 }
 
 
+/* Video List */
+
+.videolist-container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.7rem;
+  grid-area: video;
+  margin: 1.5rem 1rem;
+}
+
+/* Video Card */
+
+
+.videocard-container:hover{
+  background: rgba(228, 225, 225, 0.705);
+}
+
+.thumbnail{
+  width: 16.2rem;
+}
+
+.positioned{
+  width: 16rem;
+}
+
+.positioned:hover{
+  position: relative;
+  
+}
+
+
+.watch-later-btn{
+  position: absolute;
+  top: 0.2rem;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+}
+
+.playlist-btn{
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  font-size: 1rem;
+  border-radius: 0.2rem;
+}
+
+.normal-img{
+  width: 45px;
+  height: 45px;
+}
+
+.videocard-info{
+  margin: 0.5rem;
+  display: flex;
+  position: relative;
+}
+
+.duration{
+  position: absolute;
+  top: -2.1rem;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
+  border-radius: 0.15rem;
+}
+
+
+.videocard-text{
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0.1rem 0.5rem;
+}
+
+.title{
+  font-size: 0.9rem; 
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+}
+
+.title:hover{
+  color: #3d41d7;
+}
+
+
+.channel-name{
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: rgb(110, 109, 109);
+}
+
+.time{
+  font-size: 0.8rem;
+  color: rgb(110, 109, 109);
+}
+
+/* grid */
+
+.grid{
+  display: grid;
+  grid-template-columns: 0.9fr 4.1fr;
+  grid-template-areas:
+      "sidebar video video"
+      "sidebar video video"
+      "sidebar video video";
+}
+
+/* video-player */
+
+.video-page{
+  width: 97%;
+  margin: 1rem 2rem;
+  display: flex;
+}
+
+.video-player{
+  width: 65%;
+  height: 30rem;
+}
+
+.video-player iframe{
+  width: 100%;
+  height: 30rem; 
+}
+
+.notes-container{
+  width: 30%;
+  height: 30rem;
+  margin: 0 0 0 2rem;
+}
+
+.notes-container .notes-list{
+  width: 100%;
+  height: 27.5rem;
+  background: #DDD;
+  overflow-y: scroll;
+  
+}
+
+.notes-items{
+  background: #fff;
+  width: 82%;
+  margin: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 0.5rem;
+  color: #000;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+  word-spacing: 0.1rem;
+  font-weight: bold;
+}
+
+.notes-container input{
+  width: 93%;
+  font-size: 1.2rem;
+  padding: 0.4rem 0.8rem;
+}
+
+
+.video-details{
+  margin: 0.8rem;
+}
+
+.video-title{
+  font-size: 1.2rem;
+}
+
+.video-action{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(110, 109, 109);
+  margin: 0.5rem 0;
+}
+
+.video-action p{
+  font-size: 0.9rem;
+}
+
+.video-action div{
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.video-action span{
+  font-size: 1rem;
+}
+
+.liked-video{
+  color: #3d41d7;
+}
+
+.video-action i{
+  font-size: 1.3rem;
+}
+
+/* Horizontal Card */
+
+.hz-card{
+  display: flex;
+  width: 38rem;
+  margin: 1rem 4rem;
+}
+
+.hz-card:hover{
+  background: rgb(233, 230, 230);
+}
+
+.description{
+  color: rgb(110, 109, 109);
+  font-size: 0.9rem;
+  margin: 1rem 0 0 0;
+  flex: 1;
+}
+
+.hzvideocard-text{
+  width: 20rem;
+  margin: 0 0.5rem;
+}
+
+.hz-duration{
+  position: absolute;
+  bottom: 0;
+  left: -4rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.8rem;
+}
+
+.page-title{
+  margin: 1rem 4rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.empty-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 4rem 0;
+  color: rgba(82, 80, 80, 0.8);
+}
+
+.empty-page i{
+  font-size: 7rem;
+  margin-top: 1rem;
+}
+
+.page-cards{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* History */
+
+.history{
+  grid-area: video;
+}
+
+/* Watch Later */
+
+.watch-later{
+  grid-area: video;
+}
+
+/* Liked Videos */
+
+.user-liked{
+  grid-area: video;
+}
+
+
