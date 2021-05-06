@@ -1,17 +1,19 @@
 import { useVideo } from "../context/video-context";
 import { Link } from "react-router-dom";
 import { WatchLaterBtn } from "./index";
+import { usePlaylist } from "../context/playlist-context";
 
 
 export function HorizontalCard({item}){
     const { dispatch } = useVideo();
     const { id, thumbnail, title, channelName, time, duration, description } = item;
+    const { dispatchPlaylist } = usePlaylist();
     return(
         <div className="hz-card">
             <div className="positioned">
                 <img className="thumbnail" src={thumbnail} alt="thumbnail" />
                 <WatchLaterBtn item={item}/>
-                <div className="playlist-btn"><i className="fas fa-list"></i></div>
+                <div onClick={() => dispatchPlaylist({type:"SHOW_MODAL", payload: item})} className="playlist-btn"><i className="fas fa-list"></i></div>
             </div>
 
             <div className="videocard-info">
