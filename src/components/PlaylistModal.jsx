@@ -1,9 +1,10 @@
 import { usePlaylist } from "../context/playlist-context";
+import { CreatePlaylist } from "./index";
 
 export function PlaylistModal(){
     const { statePlaylist, dispatchPlaylist } = usePlaylist();
-    const { playlist, inputEl, toggleModal } = statePlaylist;
-    console.log(playlist);
+    const { playlist, toggleModal } = statePlaylist;
+
     return(
         <div className="playlist-modal">
             <div className="playlist-container">
@@ -35,27 +36,12 @@ export function PlaylistModal(){
 
                 {
                     statePlaylist.createPlaylist === "show" ?
-                    <div className="create-playlist">
-                        <input 
-                        value={inputEl}
-                        onChange={(e) => dispatchPlaylist({ type: "TAKE_INPUT", payload: e.target.value })} 
-                        className="text-input" 
-                        placeholder="Enter Playlist Name... " 
-                        type="text"/>
-                        <button 
-                            onClick={() => dispatchPlaylist({ type: "CREATE_PLAYLIST", payload: inputEl })} 
-                            className="primary-btn"
-                            disabled={ inputEl === "" ? true : false }
-                            >
-                                Create
-                            </button>
-                    </div>
-                    : 
-                    <button 
+                    <CreatePlaylist/>
+                    :    
+                    <button className="create-btn"
                         onClick={() => dispatchPlaylist({ type: "SHOW_CREATE"})} 
-                        className="create-btn"
-                        >
-                            + Create new playlist
+                    >
+                        + Create new playlist
                     </button>
                 }
                 
