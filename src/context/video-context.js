@@ -1,14 +1,31 @@
-import { createContext, useContext, useReducer, useState } from "react";
-import { videoData } from "../database/database";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { videoReducer } from "../reducer/video-reducer";
+import axios from "axios";
 
 const VideoList = createContext();
 
 export function VideoListProvider({children}){
-    const [ route, setRoute ] = useState(null);
-    const [ state, dispatch ] = useReducer(videoReducer, { data: videoData, currentVideo: "", history: [], watchLater: [], liked: [] });
+    const [ loader, setLoader ] = useState(false);
+    const [videoData, setVideoData ] = useState([]);
+    const [ state, dispatch ] = useReducer(videoReducer, { toggleProfile: false, toggleLoginModal: false });
+    
+    useEffect(() => {
+        (async () => {
+            setLoader(true);
+            try {
+                const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/videos';
+                const response = await axios.get(api);
+                const fetchData = response.data.videos;
+                setVideoData(fetchData);
+                setLoader(false);
+            } catch (error) {
+               console.log(error) 
+            }
+        })()
+    }, []);
+     
     return(
-        <VideoList.Provider value={{ state, dispatch, route, setRoute }}>
+        <VideoList.Provider value={{ videoData, state, dispatch, loader }}>
             {children}
         </VideoList.Provider>
     )
