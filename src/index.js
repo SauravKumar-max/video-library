@@ -4,18 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { VideoListProvider } from "./context/video-context";
-import { PlaylistProvider } from "./context/playlist-context";
+import { DataProvider } from "./context/userdata-context";
+import { AuthProvider } from "./context/auth-context";
 import { BrowserRouter as Router } from "react-router-dom";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideoListProvider>
-        <PlaylistProvider>
-          <App />
-        </PlaylistProvider>
-      </VideoListProvider>
+      <AuthProvider>
+        <VideoListProvider>
+          <DataProvider>
+            <App />
+          </DataProvider>
+        </VideoListProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
