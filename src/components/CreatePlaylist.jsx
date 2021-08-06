@@ -1,30 +1,51 @@
-import { useRef, useEffect } from "react";
-import { usePlaylist } from "../context/playlist-context";
+import { useRef, useEffect, useState } from "react";
+import { useData } from "../context/userdata-context";
+import { Loader } from "./index";
+import axios from "axios";
 
 export function CreatePlaylist(){
-    const { statePlaylist, dispatchPlaylist } = usePlaylist();
+    const [ inputValue, setValue ] = useState("");
+    const [ loader, setLoader ] = useState(false);
+    const { stateData, dispatchData } = useData();
     const playlistInput = useRef(null);
+    const { video } = stateData.playlistModal;
 
     useEffect(() => {
         playlistInput.current.focus();
     }, [playlistInput]);
 
+    async function createNewPlaylist(){
+        setLoader(true);
+        try {
+            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist';
+            const response = await axios.post(api, {name: inputValue, _id: video._id });
+            const { updatedList } = response.data;
+            const _id = updatedList[updatedList.length - 1]._id;
+            setLoader(false);
+            dispatchData({type: "CREATE_PLAYLIST", payload: { _id, name: inputValue, list:[video] }});
+            setValue("");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
         <div className="create-playlist">
             <input 
                 ref={playlistInput}
-                value={statePlaylist.inputEl}
-                onChange={(e) => dispatchPlaylist({ type: "TAKE_INPUT", payload: e.target.value })} 
+                value={inputValue}
+                onChange={ (e) => setValue(e.target.value) } 
+                maxLength="15"
                 className="text-input" 
-                placeholder="Enter Playlist Name... " 
+                placeholder="Enter Playlist Name... "
                 type="text"
             />
             <button 
-                onClick={() => dispatchPlaylist({ type: "CREATE_PLAYLIST", payload: playlistInput.current.value })} 
+                onClick={ createNewPlaylist } 
                 className="primary-btn"
-                disabled={ statePlaylist.inputEl === "" ? true : false }
+                disabled={inputValue === "" ? true : false }
             >
-                Create
+                { loader ? <Loader color={"#fff"}/> : "Create" }
             </button>
         </div>
     )
