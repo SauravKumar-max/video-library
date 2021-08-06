@@ -1,37 +1,67 @@
-import { usePlaylist } from "../context/playlist-context";
+import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useData } from "../context/userdata-context";
+
+
 
 export function PlaylistCard({item}){
-    const { statePlaylist, dispatchPlaylist } = usePlaylist();
-    const { playlist } = statePlaylist;
-    const firstVideo = playlist[item][0];
+    const [ showRemove, setShowRemove ] = useState(false);
+    const { dispatchData } = useData();
+    const { _id, name, list } = item;
+    const firstVideo = list[ list.length - 1 ];
+
+    async function removePlaylist(){
+        dispatchData({ type: "REMOVE_PLAYLIST", payload: _id });
+        try{
+            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist/remove'
+            await axios.post(api, { playlistId: _id });
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     return(
         <div className="playlist-card">
-            {playlist[item].length === 0 ? null : 
-                <Link to={`/playlists/${item}`} 
+
+            {
+                list.length !== 0 &&
+                <Link to={`/playlists/${_id}`} 
                     className="full-overlay"
-                    onClick={() => dispatchPlaylist( {type: "SHOW_CURRENT_PLAYLIST", payload: item} )}>
+                >
                     Show All
                 </Link> 
             }
             <div className="playlist-box">
-                {firstVideo === undefined ? 
+                {
+                    list.length === 0 ? 
                     <p className="empty-playlist-box"> No Videos </p> 
                     : 
                     <img src={firstVideo.thumbnail} alt="thumbnail"/>
                 }
                 <div className="overlay-text">
-                    <p>{playlist[item].length}</p>
+                    <p>{list.length}</p>
                     <i className="fas fa-list"></i>
                 </div>
             </div>
             
             <div className="delete-btn">
-                <p>{item}</p>
-                {/* <button className="remove-btn"
-                    onClick={() => dispatchPlaylist({type: "DELETE_PLAYLIST", payload: item}) }>
-                    delete
-                </button> */}
+            {showRemove && <div className="backdrop" onClick={() => setShowRemove(false)}></div>}
+                <p>{name}</p>
+                <button className="remove-btn"
+                onClick={() => setShowRemove(true)}
+                >
+                    <i className="fas fa-ellipsis-v"></i> 
+                </button>
+                {                
+                    showRemove && 
+                    <div className="remove-modal" 
+                        onClick={ removePlaylist }
+                    > 
+                        <i className="far fa-trash-alt"></i> 
+                        Remove                    
+                    </div>
+                }
             </div>
 
         </div>
