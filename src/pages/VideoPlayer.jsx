@@ -17,7 +17,7 @@ export function VideoPlayer(){
     const location = useLocation();
     const splitURL = location.pathname.split("/");
     const videoId = splitURL[splitURL.length - 1];
-    let getNotes = allNotes.find(item => item._id === videoId);
+    const getNotes = allNotes.find(item => item._id === videoId);
 
     useEffect(() => {
         (async () => {
@@ -89,7 +89,7 @@ export function VideoPlayer(){
         }
         try{
             const api = "https://Video-Library-Backend.sauravkumar007.repl.co/userdata/notes";
-            await axios.post(api, { _id: videoId, noteToTake: inputValue });
+            await axios.post(api, { videoId, noteToTake: inputValue });
         }catch(error){
             console.log(error);
         }
