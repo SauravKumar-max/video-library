@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
+import { useData } from "../context/userdata-context";
 import { useVideo } from "../context/video-context";
 import { Loader } from "./index";
 
@@ -10,11 +11,14 @@ export function ProfileCard(){
     const { dispatch } = useVideo();
     const [ userData, setUserData ] = useState({});
     const [ spinner, setSpinner ] = useState(false);
+    const { dispatchData } = useData();
     const navigate = useNavigate();
 
     function logoutAndClearDataInFrontend(){
         logout();
         navigate('/');
+        dispatch({type: "TOGGLE_PROFILE_CARD"});
+        dispatchData({ type: "FETCH_DATA", payload: {liked: [], history: [], watchLater: [], allNotes: [], playlist: []}})
     }
 
     useEffect(() => {
