@@ -15,17 +15,48 @@
   cursor: pointer;
 }
 
-.navbar-lists input{
-  width: 25rem;
-  font-size: 1rem;
+/*  Bottom navigation bar */
+
+.bottom-navigation-bar{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background: #fff;
+  padding: 1rem 0.3rem;
+  width: 100%;
+  border-top: solid 0.5px rgb(82, 80, 80);
+}
+
+.bottom-navigation-bar ul{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0 1rem;
+
+}
+
+.bottom-navigation-bar ul li i{
+  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.bottom-navigation-bar a{
+  text-decoration: none;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-weight: bold;
-  padding: 0.4rem 0.4rem;
-  outline: none;
-  border-radius: 0.2rem;
-  border: none;
+  color: rgb(82, 80, 80);
 }
 
 /* Sidebar */
+
 
 .sidebar-container{
   position: fixed;
@@ -42,7 +73,6 @@
 }
 
 .sidebar-item{
-  
   font-size: 1.2rem;
 }
 
@@ -183,6 +213,7 @@
   grid-gap: 0.7rem;
   grid-area: video;
   margin: 1.5rem 1rem;
+  width: fit-content;
 }
 
 /* Video Card */
@@ -256,8 +287,6 @@
   display: flex;
   position: relative;
 }
-
-
 
 .duration{
   position: absolute;
@@ -620,7 +649,7 @@
 }
 
 .hz-card:hover{
-  background: rgb(233, 230, 230); 
+  background: rgb(233, 230, 230);
 }
 
 .remove-modal-btn{
@@ -907,4 +936,585 @@
   width: 100%;
   height: 100%;
   background: transparent;
+}
+
+@media screen and (min-width: 1400px){
+
+  .videolist-container{
+    margin: 1.5rem auto;
+  }
+
+  .videocard-container{
+    width: 18rem;
+  }
+
+
+  .thumbnail{
+    width: 18rem;
+  }
+
+  .positioned .img-container{
+    width: 18rem;
+  }
+
+  .positioned{
+    width: 18rem;
+  }
+
+  .duration{
+    top: -2rem;
+  }
+
+  .videocard-info{
+    margin: 1.5rem 0.5rem;
+  }
+
+  .title{
+    width: 13.5rem;
+    font-size: 1rem;
+  }
+
+  .hz-card{
+    width: 41rem;
+  }
+
+  .hz-card .thumbnail{
+    width: 18.5rem;
+    height: 10rem;
+  }
+
+  .hz-card .videocard-info{
+    margin: 0.8rem;
+  }
+
+  .playlist-box{
+    width: 18rem;
+    height: 10.2rem;
+  }
+
+  .playlist-box img{
+    width: 17.8rem;
+    height: 10.1rem;
+  }
+
+  .overlay-text{
+    width: 7rem;
+    height: 10.1rem;
+  }
+
+  .full-overlay{
+    width: 18rem;
+    height: 10.2rem;
+  }
+
+  .sidebar-item a{
+    font-size: 1.3rem;
+    padding: 1rem 5rem 1rem 1rem;
+  }
+
+  .skeleton-container{
+    width: 18rem;
+    height: 14rem;
+  }
+
+  .skt-thumbnail{
+    width: 18rem;
+    height: 9rem;
+  }
+
+  .skt-channel-img{
+    width: 50px;
+    height: 50px;
+  }
+  
+  .skt-title{
+    width: 13rem;
+  }
+
+}
+
+@media screen and (max-width: 1280px){
+  
+  .videolist-container{
+    grid-template-columns: repeat(4, 1fr);
+    margin-left: 0.2rem;
+  }
+
+  .videocard-container{
+    width: 13rem;
+  }
+
+  .thumbnail{
+    width: 13rem;
+  }
+
+  .positioned .img-container{
+    width: 13rem;
+    height: 6.8rem;
+  }
+
+  .positioned{
+    width: 13rem;
+  }
+  .watch-later-btn{
+    font-size: 0.7rem;
+    right: 0.2rem;
+  }
+
+  .playlist-btn{
+    font-size: 0.7rem;
+    top: 1.5rem;
+    right: 0.2rem;
+  }
+
+  .duration{
+    font-size: 0.6rem;
+    top: -1.8rem;
+    right: -0.2rem;
+  }
+
+  .videocard-info{
+    margin: 1rem 0.5rem;
+  }
+
+  .title{
+    width: 8rem;
+    font-size: 0.7rem;
+  }
+
+  .channel-name{
+    font-size: 0.6rem;
+    margin-top: 0.4rem;
+  }
+
+  .time{
+    font-size: 0.6rem;
+  }
+
+  .normal-img{
+    width: 35px;
+    height: 35px;
+  }
+
+  .hz-card{
+    width: 30.5rem;
+  }
+
+  .hz-card .positioned{
+    width: 12rem;
+  }
+
+  .hz-card .thumbnail{
+    width: 12rem;
+  }
+
+  .hz-card .videocard-info{
+    margin: 0.5rem;
+    flex: 1;
+  }
+  
+  
+  .remove-modal-btn button{
+    font-size: 0.8rem;
+  }
+  
+  .description{
+    font-size: 0.7rem;
+  }
+  
+  .hzvideocard-text{
+    width: 15rem;
+    margin: 0 0.5rem;
+  }
+  
+  .hz-duration{
+    position: absolute;
+    bottom: 0;
+    left: -4rem;
+    font-size: 0.6rem;
+  }
+  
+  .page-title{
+    font-size: 1rem;
+  }
+  
+  .page-cards{
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 1rem;
+  }
+
+  .playlist-box{
+    width: 12rem;
+    height: 6.8rem;
+  }
+
+  .playlist-box img{
+    width: 12rem;
+  }
+
+  .overlay-text{
+    font-size: 0.6rem;
+    width: 5rem;
+    height: 6.7rem;
+  }
+
+  .full-overlay{
+    font-size: 0.7rem;
+    width: 12rem;
+    height: 6.8rem;
+  }
+
+  .overlay-text p {
+    font-size: 0.7rem;
+  }
+  
+  .empty-playlist-box{
+    margin: 3rem 0.8rem;
+    font-size: 1.2rem;
+  }
+
+  .delete-btn p{
+    font-size: 0.8rem;
+  }
+
+  .delete-btn button{
+    font-size: 0.8rem;
+  }
+  
+  .remove-modal{
+    font-size: 0.6rem;
+  }
+
+  .sidebar-item a{
+    font-size: 0.9rem;
+    padding: 1rem 2.5rem 1rem 1rem;
+  }
+
+  .skeleton-container{
+    width: 12rem;
+    height: 9rem;
+  }
+
+  .skt-thumbnail{
+    width: 12rem;
+    height: 6rem;
+  }
+
+  .skt-channel-img{
+    width: 35px;
+    height: 35px;
+  }
+  
+  .skt-title{
+    width: 8rem;
+  }
+
+  .skt-channelname{
+    width: 5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+
+@media screen and (max-width: 420px){
+
+  .grid{
+    display: block;
+  }
+
+  .sidebar-container{
+    display: none;
+  }
+
+  .videolist-container{
+    grid-template-columns: repeat(1, 100px);
+    margin: 1rem 0rem 5rem 0.7rem;
+  }
+
+  .bottom-navigation-bar{
+    display: block;
+  }
+
+  /* Video Card */
+  .videocard-container{
+    width: 21rem;
+  }
+  
+  .thumbnail{
+    width: 21rem;
+  }
+  
+  .positioned{
+    width: 21rem;
+  }
+  
+  .positioned .img-container{
+    width: 21rem;
+    height: 11.9rem;
+  }
+  
+  .watch-later-btn, .playlist-btn{
+    display: none;
+  }
+  
+  .normal-img{
+    width: 45px;
+    height: 45px;
+  }
+  
+  .videocard-info{
+    margin: 0.5rem;
+    display: flex;
+    position: relative;
+  }
+  
+  .duration{
+    top: -2.1rem;
+    right: 0;
+    font-size: 0.8rem;
+  }
+  
+  
+  .videocard-text{
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0.1rem 0.5rem;
+  }
+  
+  .videocard-text .title{
+    font-size: 0.9rem; 
+    width: 18rem;
+  }
+  
+  .channel-name{
+    font-size: 0.7rem;
+  }
+  
+  .time{
+    font-size: 0.8rem;
+  }
+
+  /* video player page */
+
+  .video-page{
+    display: flex;
+    flex-direction: column;
+    margin: 0.2rem auto;
+  }
+
+  .video-player{
+    width: 22rem;
+    height: 20rem;
+  }
+
+  .video-player iframe{
+    width: 100%;
+    height: 60%;
+  }
+
+  .notes-container{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  /* playlist page */
+
+  .empty-page{
+    font-size: 2.1rem;
+    text-align: center;
+  }
+
+  .empty-page i{
+    font-size: 6rem;
+  }
+
+  .playlists{
+    display: block;
+    margin-bottom: 5rem;
+  }
+
+  .page-title{
+    font-size: 1.3rem;
+  }
+  
+  .playlist-box{
+    width: 20rem;
+    height: 11.3rem;
+  }
+  
+  .playlist-box img{
+    width: 19.9rem;
+  }
+  
+  .overlay-text{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8rem;
+    height: 11.2rem;
+    font-size: 1.2rem;
+  }
+  
+  .overlay-text p {
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+  }
+  
+  .empty-playlist-box{
+    margin: 4rem 2rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: rgb(82, 80, 80);
+  }
+  
+  .playlist-card{
+    position: relative;
+  }
+  
+  .full-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+    z-index: 3;
+    width: 16.2rem;
+    height: 9.1rem;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+  
+  }
+  
+  .full-overlay:hover{
+    opacity: 1;
+  }
+  
+  .delete-btn{
+    width: 20rem;
+  }
+  
+  .delete-btn p{
+    font-size: 1.1rem;
+  }
+  
+  .delete-btn button{
+    font-size: 1rem;
+  }
+  
+  .remove-modal{
+   font-size: 1rem;
+  }
+  
+  .remove-modal i{
+    margin: 0 0.5rem 0 0;
+  }
+
+  /* horizontal card */
+
+  .page-cards{
+    margin-bottom: 5rem;
+  }
+
+  .hz-card{
+    width: 21rem;
+    background: rgb(233, 230, 230);
+  }
+
+  .hz-card .positioned{
+    width: 10rem;
+  }
+  
+  .hz-card .thumbnail{
+    width: 10rem;
+  }
+
+  .remove-modal-btn{
+    opacity: 1;
+  }
+
+  .hz-card .remove-modal{
+    font-size: 0.8rem;
+  }
+  
+  .remove-modal-btn button{
+    left: 0;
+    font-size: 0.8rem;
+  }
+  
+  .description{
+    display: none;
+  }
+  
+  .hzvideocard-text{
+    width: 9.2rem;
+    margin: 0 0.2rem 0 0;
+  }
+
+  .hzvideocard-text .title{
+    font-size: 0.7rem;
+    width: 7rem;
+  }
+
+  .hzvideocard-text .channel-name, .time{
+    font-size: 0.5rem;
+  }
+  
+  .hz-duration{
+    position: absolute;
+    bottom: 0;
+    left: -3.5rem;
+    font-size: 0.6rem;
+  }
+  
+
+  /* login */
+
+  .login-container{
+    width: 21rem;
+  }
+
+  /* skeleton cards */
+
+  .skeleton-container{
+    width: 21rem;
+    height: 17rem;
+  }
+  
+  .skt-thumbnail{
+    width: 21rem;
+    height: 11rem;
+  }
+  
+  .skt-channel-img{
+    width: 45px;
+    height: 45px;
+  }
+  
+  .skt-title{
+    width: 13rem;
+    height: 1.5rem;
+  }
+  
+  .skt-channelname{
+    width: 8rem;
+    height: 1rem;
+    position: absolute;
+    top: 80%;
+    left: 4rem;
+  }
+
+  /* horizontal skeleton card */
+
+  .skt-hz-card{
+    width: 21rem;
+    height: 6rem;
+  }
+  
 }
