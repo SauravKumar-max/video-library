@@ -10,10 +10,9 @@ export function Navbar(){
             <nav className="navbar">
                 <p onClick={() => navigate('/')}>NeuroTube</p>
                             
-                <div className="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div className="hamburger" style={{fontSize: "1.5rem"}}
+                    onClick={() => dispatch({type: "TOGGLE_PROFILE_CARD"})}>
+                    <i className="fas fa-user-circle"></i>
                 </div>
 
                                 
