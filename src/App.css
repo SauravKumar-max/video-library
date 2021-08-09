@@ -1228,10 +1228,6 @@
   }
 
   .videolist-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     grid-template-columns: repeat(1, 100%);
     margin: 1rem auto 5rem auto;
   }
@@ -1310,6 +1306,7 @@
   .video-player{
     width: 22rem;
     height: 20rem;
+    margin: 0.5rem auto;
   }
 
   .video-player iframe{
