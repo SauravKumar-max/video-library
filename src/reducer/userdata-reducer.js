@@ -44,14 +44,14 @@ export const dataReducer = ( stateData, action ) => {
         case "CREATE_PLAYLIST":
             return { ...stateData, playlist: [...stateData.playlist, { ...action.payload }] }
     
+        case "REMOVE_PLAYLIST":
+            return {...stateData, playlist: stateData.playlist.filter(item => item._id !== action.payload) };
+    
         case "ADD_TO_PLAYLIST": 
             return { ...stateData, playlist: stateData.playlist.map(item => item._id === action.payload.playlistId ? {...item, list: [...item.list, action.payload.video]} : item ) };
 
         case "REMOVE_FROM_PLAYLIST":
             return { ...stateData, playlist: stateData.playlist.map(item => item._id === action.payload.playlistId ? {...item, list: item.list.filter(video => video._id !== action.payload.videoId )} : item )};
-
-        case "REMOVE_PLAYLIST":
-            return {...stateData, playlist: stateData.playlist.filter(list => list._id !== action.payload) };
 
         default:
             break;
