@@ -8,6 +8,6 @@ export const videoReducer = (state, action) => {
             return { ...state, toggleLoginModal: !state.toggleLoginModal };
        
         default:
-            break;
+            return state;
     }
 }
