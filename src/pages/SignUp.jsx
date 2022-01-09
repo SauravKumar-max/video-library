@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/auth-context";
 import { Loader } from "../components/index";
@@ -9,8 +9,16 @@ export function SignUp(){
     const [ checkForm, setCheckForm ] = useState(false);
     const [ showPassword, setShowPassword ] = useState(false);
     const [ spinner, setSpinner ] = useState(false);
-    const { loginUserWithCredentials } = useAuth();
+    const { login, loginUserWithCredentials } = useAuth();
     const navigate = useNavigate();
+    const { state } = useLocation();
+
+    useEffect(() => {
+        if(login){
+            navigate(state?.from ? state.from : '/');
+        }
+    }, [login, navigate, state])
+
 
     useEffect(() => {
         const { name, username, email, password, confirmPassword } = inputs;   
