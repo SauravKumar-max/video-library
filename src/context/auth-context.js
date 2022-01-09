@@ -20,8 +20,8 @@ export function AuthProvider({children}){
             const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/user/login';
             const response = await axios.post(api, {user: { email, password }});
             if(response.status === 200){
-                loginUser(response.data);
                 setSpinner(false);
+                loginUser(response.data);
             }
         } catch (error){
             if(error.response.status === 404){
