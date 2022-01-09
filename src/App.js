@@ -1,5 +1,5 @@
 import './App.css';
-import { LoginModal, Navbar, PlaylistModal } from "./components/index";
+import { LoginModal, Navbar, PlaylistModal, Snackbar } from "./components/index";
 import { Routes, Route } from "react-router-dom";
 import { Home, VideoPlayer, History, WatchLater, Like, Login, SignUp, Playlist, PlaylistItems, PrivateRoute } from "./pages/index";
 import { useData } from './context/userdata-context';
@@ -13,6 +13,7 @@ function App() {
     <div className="App">
       { stateData.playlistModal.show && <PlaylistModal/> }
       { state.toggleLoginModal && <LoginModal/> }
+      { stateData.snackbar.show && <Snackbar/> }
       <Navbar/>
       <Routes>
           <Route path="/" element={ <Home/> } />
@@ -25,7 +26,6 @@ function App() {
           <PrivateRoute path="/playlists/:id" element={ <PlaylistItems/> } />
           <PrivateRoute path="/history" element={ <History/> } />
       </Routes>
-   
     </div>
   );
 }
