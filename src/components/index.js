@@ -12,3 +12,4 @@ export { Loader } from "./Loader";
 export { ProfileCard } from "./ProfileCard";
 export { SkeletonHorizontalCard } from "./Skeletons/SkeletonHorizontalCard";
 export { LoginModal } from "./LoginModal"
+export { Snackbar } from "./Snackbar";
