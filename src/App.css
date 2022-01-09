@@ -92,6 +92,47 @@
   background-color: rgba(196, 192, 192, 0.3);
 }
 
+/* Snackbar */
+
+.snackbar{
+  position: fixed;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  width: max-content;
+  background: rgba(0, 0, 0, 0.918);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  margin: 1rem;
+  border-radius: 0.3rem;
+  animation: slidein 2s ease-in-out;
+}
+
+@keyframes slidein {
+  0%{
+    opacity: 0.5;
+    transform: translateY(2rem);
+      
+  }
+  25%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50%{
+    opacity: 1;
+    transform: translateY(0); 
+  }
+  75%{
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(2rem)
+  }
+}
+
+
 /* Login */
 
 .login-container{
@@ -137,7 +178,14 @@
   cursor: pointer;
 }
 
-
+.fill-credentials{
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #3d41d7;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-bottom: 0.7rem;
+}
 .password-field{
   position: relative;
   width: 90%;
@@ -414,7 +462,6 @@
 }
 
 .skt-player{
-  position: absolute;
   width: 100%;
   height: 30rem;
   background: rgba(196, 192, 192, 0.7);
@@ -1317,8 +1364,22 @@
   .notes-container{
     position: relative;
     bottom: 0;
-    width: 100%;
-    margin: 0;
+    width: 95%;
+    margin: auto;
+  }
+
+  .skt-player{
+    width: 22rem;
+    height: 19rem;
+    margin: 1rem;
+  }
+
+  .skt-details{
+    display: none;
+  }
+
+  .skt-others{
+    display: none;
   }
 
   /* playlist page */
@@ -1373,6 +1434,7 @@
   
   .playlist-card{
     position: relative;
+    margin: 1rem;
   }
   
   .full-overlay{
@@ -1424,16 +1486,16 @@
   }
 
   .hz-card{
-    width: 21rem;
+    width: 100%;
     background: rgb(233, 230, 230);
   }
 
   .hz-card .positioned{
-    width: 10rem;
+    width: 12rem;
   }
   
   .hz-card .thumbnail{
-    width: 10rem;
+    width: 12rem;
   }
 
   .remove-modal-btn{
@@ -1514,7 +1576,7 @@
   /* horizontal skeleton card */
 
   .skt-hz-card{
-    width: 21rem;
+    width: 100%;
     height: 6rem;
   }
   
