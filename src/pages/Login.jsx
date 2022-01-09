@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/auth-context";
 import { Loader } from "../components";
 
@@ -8,8 +8,15 @@ export function Login(){
     const [ password, setPassword ] = useState("");
     const [ checkForm, setCheckForm ] = useState(false);
     const [ showPassword, setShowPassword ] = useState(false);
-    const { loginUserWithCredentials, spinner, errorMessage } = useAuth();
+    const { loginUserWithCredentials, spinner, errorMessage, login } = useAuth();
     const navigate = useNavigate();
+    const { state } = useLocation();
+
+    useEffect(() => {
+        if(login){
+            navigate(state?.from ? state.from : '/');
+        }
+    }, [login, navigate, state])
 
     useEffect(() => {
         if(email !== "" && password !== "" ){
@@ -54,6 +61,14 @@ export function Login(){
                 {spinner ? <Loader color={"#fff"}/> : "Login" }
             </button>
             <small>Don't have an account. <span onClick={() => navigate('/signup')}> SignUp </span> </small>
+            <span className="fill-credentials"
+                onClick={() => {
+                    setEmail("guest123@gmail.com");
+                    setPassword("Guest@123")
+                }}
+            > 
+               Fill Guest Credentials
+            </span>
         </div>
     )
 }
