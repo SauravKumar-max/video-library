@@ -10,7 +10,7 @@ export function Like(){
             {
                 dataLoader ? <SkeletonHorizontalCard/> 
                 :
-                stateData.liked.length === 0 ? 
+                stateData.liked?.length === 0 ? 
                 <div className="empty-page"> 
                     <p>You Haven't Liked Anything.</p> 
                     <i className="fas fa-heart-broken"></i>
@@ -19,7 +19,7 @@ export function Like(){
                 <p className="page-title">Liked Videos</p>
             }
                 <div className="page-cards">
-                    {stateData.liked.map(item => {
+                    {stateData.liked?.map(item => {
                         return(
                             <HorizontalCard key={item._id} item={item} type={"removeFromLike"}/>
                         )
