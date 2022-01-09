@@ -1,7 +1,6 @@
 import axios from "axios";
 import { decode } from "jsonwebtoken";
 import { createContext, useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 
 
 const Auth = createContext();
@@ -12,8 +11,6 @@ export function AuthProvider({children}){
     const [ token, setToken ] = useState(savedToken);
     const [ spinner, setSpinner ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState("");
-    const { state } = useLocation();
-    const navigate = useNavigate();
     checkTokenExpiration();
 
 
@@ -24,6 +21,7 @@ export function AuthProvider({children}){
             const response = await axios.post(api, {user: { email, password }});
             if(response.status === 200){
                 loginUser(response.data);
+                setSpinner(false);
             }
         } catch (error){
             if(error.response.status === 404){
@@ -43,7 +41,7 @@ export function AuthProvider({children}){
         setToken(token);
         setLogin(true);
         localStorage?.setItem('login', JSON.stringify({ isUserLoggedIn: true, token: token }));
-        navigate(state?.from ? state.from : '/');
+        
     }
 
     function logout(){
