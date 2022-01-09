@@ -53,7 +53,13 @@ export const dataReducer = ( stateData, action ) => {
         case "REMOVE_FROM_PLAYLIST":
             return { ...stateData, playlist: stateData.playlist.map(item => item._id === action.payload.playlistId ? {...item, list: item.list.filter(video => video._id !== action.payload.videoId )} : item )};
 
+        // SnackBar
+        case "SHOW_SNACKBAR": 
+            return { ...stateData, snackbar: { show: true, message: action.payload }};
+
+        case "HIDE_SNACKBAR": 
+            return { ...stateData, snackbar: { show: false, message: "" }};
         default:
-            break;
+            return stateData;
     }
 }
