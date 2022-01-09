@@ -20,6 +20,10 @@ export function DataProvider({children}){
             show: false,
             video: null,
         },
+        snackbar: {
+            show: false,
+            message: ""
+        }
     }
 
     const [ stateData, dispatchData ] = useReducer(dataReducer, data)
