@@ -1,32 +1,13 @@
 import { useData } from "../context/userdata-context";
-import axios from "axios";
 import { useAuth } from "../context/auth-context";
 import { useVideo } from "../context/video-context";
+import { useDataCall } from "../hooks/userdataAPICalls";
 
 export function WatchLaterBtn({item}){
-    const { stateData, dispatchData } = useData();
+    const { stateData } = useData();
     const { login } = useAuth();
     const { dispatch } = useVideo();
-
-    async function addToWatchLater(video){
-        dispatchData({type: "ADD_TO_WATCHLATER", payload: video})
-        try {
-            const api = `https://Video-Library-Backend.sauravkumar007.repl.co/userdata/watchLater/${video._id}`;
-            await axios.post(api);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    async function removeFromWatchLater(_id){
-        dispatchData({type: "REMOVE_FROM_WATCHLATER", payload: _id})
-        try {
-            const api = `https://Video-Library-Backend.sauravkumar007.repl.co/userdata/watchLater/${_id}`;
-            await axios.delete(api);
-        } catch (error) {
-            console.log(error) 
-        }
-    }
+    const { addToWatchLater, removeFromWatchLater } = useDataCall()
 
     return(
         <>

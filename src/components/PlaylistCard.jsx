@@ -1,29 +1,17 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useData } from "../context/userdata-context";
+import { useDataCall } from "../hooks/userdataAPICalls";
 
 
 
 export function PlaylistCard({item}){
     const [ showRemove, setShowRemove ] = useState(false);
-    const { dispatchData } = useData();
+    const { removePlaylist } = useDataCall()
     const { _id, name, list } = item;
     const firstVideo = list[ list.length - 1 ];
 
-    async function removePlaylist(){
-        dispatchData({ type: "REMOVE_PLAYLIST", payload: _id });
-        try{
-            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist/remove'
-            await axios.post(api, { playlistId: _id });
-        }catch(error){
-            console.log(error)
-        }
-    }
-
     return(
         <div className="playlist-card">
-
             {
                 list.length !== 0 &&
                 <Link to={`/playlists/${_id}`} 
@@ -56,7 +44,7 @@ export function PlaylistCard({item}){
                 {                
                     showRemove && 
                     <div className="remove-modal" 
-                        onClick={ removePlaylist }
+                        onClick={ () => removePlaylist(_id) }
                     > 
                         <i className="far fa-trash-alt"></i> 
                         Remove                    

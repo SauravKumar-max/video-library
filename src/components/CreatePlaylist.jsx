@@ -1,33 +1,18 @@
 import { useRef, useEffect, useState } from "react";
 import { useData } from "../context/userdata-context";
 import { Loader } from "./index";
-import axios from "axios";
+import { useDataCall } from "../hooks/userdataAPICalls";
 
 export function CreatePlaylist(){
     const [ inputValue, setValue ] = useState("");
-    const [ loader, setLoader ] = useState(false);
-    const { stateData, dispatchData } = useData();
+    const { stateData } = useData();
     const playlistInput = useRef(null);
     const { video } = stateData.playlistModal;
+    const { loader, createNewPlaylist } = useDataCall();
 
     useEffect(() => {
         playlistInput.current.focus();
     }, [playlistInput]);
-
-    async function createNewPlaylist(){
-        setLoader(true);
-        try {
-            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist';
-            const response = await axios.post(api, {name: inputValue, _id: video._id });
-            const { updatedList } = response.data;
-            const _id = updatedList[updatedList.length - 1]._id;
-            setLoader(false);
-            dispatchData({type: "CREATE_PLAYLIST", payload: { _id, name: inputValue, list:[video] }});
-            setValue("");
-        } catch (error) {
-            console.log(error);
-        }
-    }
 
     return(
         <div className="create-playlist">
@@ -41,7 +26,7 @@ export function CreatePlaylist(){
                 type="text"
             />
             <button 
-                onClick={ createNewPlaylist } 
+                onClick={ () => createNewPlaylist(inputValue, video, setValue) } 
                 className="primary-btn"
                 disabled={inputValue === "" ? true : false }
             >

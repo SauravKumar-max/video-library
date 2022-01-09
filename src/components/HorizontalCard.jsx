@@ -2,59 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { WatchLaterBtn } from "./index";
 import { useData } from "../context/userdata-context";
 import { useState } from "react";
-import axios from "axios";
+import { useDataCall } from "../hooks/userdataAPICalls";
 
 
-export function HorizontalCard({item, type, playlistId}){
+export function HorizontalCard({ item, type, playlistId }){
     const [ showRemove, setShowRemove ] = useState(false);
     const { _id, thumbnail, title, channelName, time, duration, description } = item;
     const { dispatchData } = useData();
+    const { removeFromHistory, removeFromLike, removeFromWatchLater, removeFromPlaylist } = useDataCall();
     const navigate = useNavigate();
 
     
-    
-    async function removeFromHistory(_id){
-        dispatchData({type: "REMOVE_FROM_HISTORY", payload: _id});
-        try{
-            const api = `https://Video-Library-Backend.sauravkumar007.repl.co/userdata/history/${_id}`;
-            await axios.delete(api);
-        }catch(error){
-            console.log(error);
-        }
-    }
-
-    async function removeFromLike(_id){
-        dispatchData({type: "REMOVE_FROM_LIKE", payload: _id});
-        try {
-            const api = `https://Video-Library-Backend.sauravkumar007.repl.co/userdata/likedVideos/${_id}`;
-            await axios.delete(api);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    async function removeFromWatchLater(_id){
-        dispatchData({type: "REMOVE_FROM_WATCHLATER", payload: _id})
-        try {
-            const api = `https://Video-Library-Backend.sauravkumar007.repl.co/userdata/watchLater/${_id}`;
-            await axios.delete(api);
-        } catch (error) {
-            console.log(error) 
-        }
-    }
-
-    async function removeFromPlaylist(playlistId, videoId){
-        dispatchData({type: "REMOVE_FROM_PLAYLIST", payload: { playlistId, videoId }})
-        try {
-            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist/remove';
-            await axios.post(api, { playlistId, videoId });
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    
-    function allRemoveActions(type, _id){
+    function allRemoveActions(type, _id, playlistId){
         switch (type) {
             case "removeFromHistory":
                 return removeFromHistory(_id);
@@ -69,7 +28,7 @@ export function HorizontalCard({item, type, playlistId}){
                 return removeFromPlaylist(playlistId, _id);
         
             default:
-                break;
+                return null;
         }
     }
 

@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { useData } from "../context/userdata-context";
+import { useDataCall } from "../hooks/userdataAPICalls";
 import { CreatePlaylist } from "./index";
 
 export function PlaylistModal(){
@@ -8,26 +8,7 @@ export function PlaylistModal(){
     const { stateData, dispatchData } = useData();
     const { playlist, playlistModal } = stateData;
     const { _id: videoId } = playlistModal.video;
-
-    async function addToPlaylist(item){
-        try {
-            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist';
-            axios.post(api, { name: item.name, _id: videoId });
-            dispatchData({ type: "ADD_TO_PLAYLIST", payload: {playlistId: item._id, video: playlistModal.video} });
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async function removeFromPlaylist(playlistId){
-        dispatchData({type: "REMOVE_FROM_PLAYLIST", payload: { playlistId, videoId }});
-        try {
-            const api = 'https://Video-Library-Backend.sauravkumar007.repl.co/userdata/playlist/remove';
-            await axios.post(api, { playlistId, videoId });
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const { addToPlaylist, removeFromPlaylist } = useDataCall()
 
     return(
         <div className="playlist-modal">
@@ -61,7 +42,7 @@ export function PlaylistModal(){
                                 <label key={item._id}>
                                     <input 
                                         checked={ findVideo ? true : false}
-                                        onChange={ () => findVideo ? removeFromPlaylist(item._id) : addToPlaylist(item) }
+                                        onChange={ () => findVideo ? removeFromPlaylist(item._id, videoId) : addToPlaylist(item, videoId, playlistModal) }
                                         type="checkbox"
                                     />
                                     {item.name}
