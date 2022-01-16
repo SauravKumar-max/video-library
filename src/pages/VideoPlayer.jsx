@@ -15,6 +15,7 @@ export function VideoPlayer(){
     const { watchLater, liked, allNotes } = stateData;
     const video = videoData?.find(item => item._id === videoId)
     const { _id, time, videoUrl, title } = video || {};
+    const newVideoUrl = videoUrl?.replace('https://', "https://www.");
     const getNotes = allNotes?.find(notes => notes._id === videoId);
     const { removeFromLike, addToLike, removeFromWatchLater, addToWatchLater, addNotes  } = useDataCall()
 
@@ -39,10 +40,12 @@ export function VideoPlayer(){
                 :
                 <div className="video-player">
                     <iframe 
-                        src={videoUrl} 
-                        title="video"
-                        frameBorder="0" 
-                        allowFullScreen />
+                        src={newVideoUrl}
+                        title={title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                    >
+                    </iframe>
 
                     <div className="video-details">
                         <p className="video-title">{title}</p>
