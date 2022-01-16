@@ -16,7 +16,7 @@ export const dataReducer = ( stateData, action ) => {
         // History 
 
         case "ADD_TO_HISTORY":
-                return {...stateData, history: [ ...stateData.history.filter(item => item._id !== action.payload._id), action.payload ]};
+                return {...stateData, history: [ ...stateData.history.filter(item => item?._id !== action.payload?._id), action.payload ]};
     
         case "REMOVE_FROM_HISTORY":
             return { ...stateData, history: stateData.history.filter(item => item._id !== action.payload)}
