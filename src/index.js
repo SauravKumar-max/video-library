@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { VideoListProvider } from "./context/video-context";
+import { DataProvider } from "./context/userdata-context";
+import { AuthProvider } from "./context/auth-context";
+import { BrowserRouter as Router } from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <AuthProvider>
+        <VideoListProvider>
+          <DataProvider>
+            <App />
+          </DataProvider>
+        </VideoListProvider>
+      </AuthProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
