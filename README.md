@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# NeuroTube
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Neurotube is a video library app where you can watch videos related to neuroscience.
 
 ## Available Scripts
 
